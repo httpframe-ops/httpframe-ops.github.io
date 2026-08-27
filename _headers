@@ -1,0 +1,8 @@
+# Cross-origin isolation, so onnxruntime's WebAssembly build can use more than one
+# core. Without these, SharedArrayBuffer is unavailable and depth estimation runs
+# single-threaded. Safe here because every asset is same-origin.
+#
+# This file is the Cloudflare Pages / Netlify format. Other hosts need their own.
+/*
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
