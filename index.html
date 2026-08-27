@@ -12,45 +12,26 @@
     <script type="module" crossorigin src="/assets/index-B5NeHsBy.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-0gwIHJTK.css">
   </head>
-  <!-- The page opens with the house lights ON: a lit room with examples on the wall,
-       so a stranger can see what this does before being asked for anything. Choosing
-       a photo dims the room and starts the show. src/room.js owns that switch. -->
+  
   <body class="parked lit">
-    <!-- Everything visible lives in here so it can be SCALED AS ONE.
-         The room is built at a fixed number of pixels; the window is not. On a big
-         display the whole scene sat small in the middle of the frame, and on a short
-         one it did not fit. This is drawn at a reference height of 900 and scaled to
-         whatever the window is, so the composition is identical at every size - which
-         is what he was doing by hand with ctrl+scroll. room.js sets --fit. -->
+    
     <div id="fit">
 
-    <!-- The room. Four planes, none of it interactive: the floor and ceiling are
-         tilted in CSS perspective so the boards converge on a vanishing point at
-         seated eye level. Kept out of #app so the app's own layout stays a plain
-         column, and fixed to the viewport so that on the rare screen too short to fit
-         everything, the content scrolls and the room does not. -->
+    
     <div class="room" aria-hidden="true">
-      <!-- Everything the camera moves lives in here. The overlays below it - house
-           lights, vignette, dust, grain - belong to the lens, not to the room, so
-           they stay put while the room pans. -->
+      
       <div class="camera">
       <div class="ceiling"></div>
       <div class="wall"><div class="wall-dim"></div><div class="wall-spill"></div><div class="cornice"></div><div class="skirting"></div></div>
-      <!-- The two side walls. Without them the back wall just runs on sideways for
-           220vw and a wide screen reads as a hall rather than a room. -->
+      
       <div class="sidewall sidewall-left"><div class="cornice"></div><div class="skirting"></div></div>
       <div class="sidewall sidewall-right"><div class="cornice"></div><div class="skirting"></div></div>
       <div class="floor">
-        <!-- inside the floor, so the light pool is foreshortened by the same
-             perspective as the boards it is falling on -->
+        
         <div class="floor-light"></div>
       </div>
 
-      <!-- The table the projector stands on. A wrapped shell - the top slab curves
-           down into thick side panels - open front and back, so you look straight
-           through the tunnel, with a shelf across the bottom of it. Four splayed
-           tapered legs. Built as real faces like the projector, for the same reason:
-           the camera moves, and a painted-on box gives itself away the moment it does. -->
+      
       <div class="table" aria-hidden="true">
         <div class="tb-top"></div>
         <div class="tb-side tb-left"></div>
@@ -58,10 +39,7 @@
         <div class="tb-in tb-in-left"></div>
         <div class="tb-in tb-in-right"></div>
         <div class="tb-shelf"></div>
-        <!-- The rim around each open end. One element with a thick rounded BORDER, so
-             the hole in the middle is really a hole - you see the tunnel through it -
-             and the corners round on the outside and the inside at once, which is the
-             shape the real thing has. -->
+        
         <div class="tb-rim tb-rim-back"></div>
         <div class="tb-rim tb-rim-front"></div>
         <i class="tb-leg tb-leg-bl"><b></b></i>
@@ -70,13 +48,10 @@
         <i class="tb-leg tb-leg-fr"><b></b></i>
       </div>
 
-      <!-- The projector, seen from behind: its top face and the upper rim of the
-           lens. The controls sit on this face. -->
+      
       <div class="projector">
         <div class="pj">
-          <!-- The back panel: the only side anyone sitting on the sofa really sees.
-               Recessed carry handle along the top, exhaust grille on the left, focus
-               knob and the two slide-change buttons on the right. -->
+          
           <div class="pj-face pj-rear">
             <div class="pj-handle"></div>
             <div class="pj-vent"></div>
@@ -93,17 +68,14 @@
           <div class="pj-face pj-left"></div>
           <div class="pj-face pj-right"></div>
           <div class="pj-face pj-fore"></div>
-          <!-- The slide cube: the one thing that makes this a Slide Cube and not any
-               other projector. Clear plastic, sitting proud in a well on the top. -->
+          
           <div class="pj-cube">
             <i class="cu-back"></i><i class="cu-top"></i><i class="cu-side"></i>
           </div>
           <div class="pj-barrel"></div>
         </div>
       </div>
-      <!-- Dust in the light: specks lighting up as they cross it, rising from the
-           lens and spreading toward the screen. Same trick - the specks never appear ON
-           the screen because the screen is painted above them. -->
+      
       <div class="beam">
         <i style="--dx: -46vmin; --t: 7.5s; --d: -0.4s"></i>
         <i style="--dx: -34vmin; --t: 9.1s; --d: -3.2s"></i>
@@ -121,21 +93,14 @@
 
       </div>
 
-      <!-- The beam. ONE element: a radial gradient for how the light falls off with
-           distance, and a conic-gradient mask for the wedge it is thrown in. Outside
-           .camera because it only ever shows with the camera parked at the viewing
-           angle, and still inside .room so the picture (z-index 1) is painted over it
-           and the light stops at the screen, the way real light does. -->
+      
       <div class="beam-cone" aria-hidden="true"></div>
 
-      <!-- The house lights. Fading these out is the whole transition: everything
-           underneath is already the dark room. -->
+      
       <div class="houselight"></div>
       <div class="vignette"></div>
 
-      <!-- The air in the room. Dust drifting is the oldest signal that a projector is
-           running, and film grain is what stops a dark frame reading as a flat fill.
-           Both are skipped for anyone who has asked for reduced motion. -->
+      
       <div class="dust">
         <i style="--x: 12%; --t: 21s; --d: -3s; --s: 2px"></i>
         <i style="--x: 23%; --t: 27s; --d: -9s; --s: 3px"></i>
@@ -153,22 +118,17 @@
       <div class="grain"></div>
     </div>
 
-    <!-- The name is interface, not part of the room, so it sits outside #app and
-         does not travel with the camera. -->
+    
     <h1>Still Standing</h1>
 
-    <!-- The way in. The switch on the machine is a real button and works, but it is
-         the size of a fingernail across the room, so the thing you actually press is
-         out here on the floor with a line drawn to the control it operates. -->
+    
     <div id="powerlead" class="powerlead" aria-hidden="true"></div>
     <button id="power" class="callout" type="button">
       <span class="callout-title">Switch on the projector</span>
       <span class="callout-hint">and pick a photo</span>
     </button>
 
-    <!-- The controls that belong to the machine rather than to the page, each wired
-         to the part of it that does the job: the cube you swap a slide into, the fan
-         that makes the noise, the slide-change button, the power switch. -->
+    
     <div id="wired" class="wired">
       <span class="lead lead-cube" aria-hidden="true"></span>
       <button id="newphoto" class="tap" type="button">Choose another photo</button>
@@ -184,10 +144,7 @@
     </div>
 
     <main id="app">
-      <!-- What the app does, shown rather than described. These are real output:
-           each one is a photograph put through this app, exported, and shrunk to
-           gallery size. They hang on the wall in the lit room and go into the dark
-           with everything else once the show starts. -->
+      
       <div class="gallery">
         <figure class="sample">
           <video src="/examples/q660.mp4" poster="/examples/q660.jpg" autoplay muted loop playsinline preload="auto"></video>
@@ -209,8 +166,7 @@
         </figure>
       </div>
 
-      <!-- The screen, rolled up against the wall. Scenery now, not a control: the
-           power switch on the projector is what starts everything. -->
+      
       <div id="drop" class="drop">
         <span class="drop-roller"></span>
         <span class="drop-fabric"></span>
@@ -248,9 +204,7 @@
       </div>
 
       <div id="result" class="result" hidden>
-        <!-- The media is wrapped so the screen chrome - roller above, pull ring
-             below - can hang off it. Those are pseudo-elements, and a <video> or
-             <img> cannot carry them. -->
+        
         <div class="screen">
           <video id="video" playsinline autoplay muted loop></video>
           <img id="gifimg" alt="Your clip as an animated GIF" hidden />
@@ -268,7 +222,7 @@
       <p id="error" class="error" hidden></p>
       <p id="diag" class="diag" hidden></p>
     </main>
-    </div><!-- /#fit -->
+    </div>
 
   </body>
 </html>
