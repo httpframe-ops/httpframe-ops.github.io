@@ -9,9 +9,11 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d0d10'/%3E%3Crect x='7' y='10' width='13' height='12' rx='2' fill='%23e8e2d4'/%3E%3Cpath d='M21 14l5-3v10l-5-3z' fill='%23e8e2d4'/%3E%3C/svg%3E"
     />
-    <script type="module" crossorigin src="/assets/index-0YUmRYet.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DrJtr_ny.css">
-  </head>
+    
+  <link rel="preload" href="/projector.stl" as="fetch" crossorigin="anonymous" />
+  <script type="module" crossorigin src="/assets/index-CLezJGNc.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BPenCW9c.css">
+</head>
   
   <body class="parked lit">
     
@@ -50,27 +52,54 @@
 
       
       <div class="projector">
+        
+        <img class="pj-photo" src="/projector.png" alt="" aria-hidden="true" />
         <div class="pj">
           
           <div class="pj-face pj-rear">
-            <div class="pj-handle"></div>
+            
+            <div class="pj-strip"><i class="pj-logo"></i><i class="pj-mark"></i></div>
+
+            <div class="pj-panel">
+              <span class="pj-dial pj-dial-a"></span>
+              <span class="pj-dial pj-dial-b"></span>
+              
+              <div class="pj-advance"><i></i><i></i></div>
+              
+              <span class="pj-selector"><i></i></span>
+              <span class="pj-slot"></span>
+            </div>
+
             <div class="pj-vent"></div>
-            <div class="pj-badge"></div>
-            <div class="pj-advance"><i></i><i></i></div>
             <span class="pj-lamp"></span>
-          </div>
-          <div class="pj-face pj-top">
-            <div class="pj-well"></div>
             <button id="pj-power" class="pj-power" type="button" tabindex="-1" aria-hidden="true">
               <span class="pj-power-rocker"></span>
             </button>
           </div>
+
+          <div class="pj-face pj-top"><span class="pj-topvent"></span></div>
           <div class="pj-face pj-left"></div>
           <div class="pj-face pj-right"></div>
           <div class="pj-face pj-fore"></div>
+
           
-          <div class="pj-cube">
-            <i class="cu-back"></i><i class="cu-top"></i><i class="cu-side"></i>
+          <div class="pj-hood">
+            <i class="hd-top"></i>
+            <i class="hd-face"></i>
+            <span class="pj-knob pj-knob-a"></span>
+            <span class="pj-knob pj-knob-b"></span>
+          </div>
+
+          
+          <div class="pj-reels">
+            <span class="pj-arm pj-arm-a"></span>
+            <span class="pj-arm pj-arm-b"></span>
+            <span class="pj-reel pj-reel-a">
+              <i class="rl-back"></i><i class="rl-film"></i><i class="rl-front"></i><i class="rl-hub"></i>
+            </span>
+            <span class="pj-reel pj-reel-b">
+              <i class="rl-back"></i><i class="rl-film"></i><i class="rl-front"></i><i class="rl-hub"></i>
+            </span>
           </div>
           <div class="pj-barrel"></div>
         </div>
@@ -78,7 +107,16 @@
       </div>
 
       
-      <div class="beam-cone" aria-hidden="true"></div>
+      <div class="houselight"></div>
+      <div class="vignette"></div>
+
+      <div class="grain"></div>
+    </div>
+
+    
+    <div class="beam-layer" aria-hidden="true">
+      
+      <div class="beam-cone" aria-hidden="true"><i class="beam-tint"></i></div>
 
       
       <div class="beam-dust" aria-hidden="true">
@@ -88,12 +126,6 @@
           <i class="bd-near"></i>
         </div>
       </div>
-
-      
-      <div class="houselight"></div>
-      <div class="vignette"></div>
-
-      <div class="grain"></div>
     </div>
 
     
@@ -119,6 +151,22 @@
 
       <span class="lead lead-power" aria-hidden="true"></span>
       <button id="poweroff" class="tap tap-off" type="button" hidden>Turn the projector off</button>
+    </div>
+
+    
+    <div id="remote" class="remote">
+      <span class="remote-cord" aria-hidden="true"></span>
+      <div id="actions" class="actions" hidden>
+        <button id="generate" class="primary">Bring it to life</button>
+        <span id="length" class="length" hidden>
+          <button class="len" data-repeats="1">6s</button>
+          <button class="len" data-repeats="2">12s</button>
+          <button class="len" data-repeats="3">18s</button>
+        </span>
+        <button id="make" class="primary" hidden>Make the video</button>
+        <button id="makegif" hidden>Make a GIF</button>
+        <progress id="progress" max="1" value="0" hidden></progress>
+      </div>
     </div>
 
     <main id="app">
@@ -157,8 +205,10 @@
         <span class="gate-hint">or drag one onto the screen</span>
       </button>
 
+      
       <div id="stage" class="stage screen" hidden>
         <canvas id="canvas"></canvas>
+        <button id="compare" hidden>Hold to see the original</button>
         <span class="screen-shade" aria-hidden="true"></span>
       </div>
 
@@ -168,18 +218,6 @@
         <output id="working-pct">0%</output>
       </div>
 
-      <div id="actions" class="actions" hidden>
-        <button id="generate" class="primary">Bring it to life</button>
-        <button id="compare" hidden>Hold to see the original</button>
-        <span id="length" class="length" hidden>
-          <button class="len" data-repeats="1">6s</button>
-          <button class="len" data-repeats="2">12s</button>
-          <button class="len" data-repeats="3">18s</button>
-        </span>
-        <button id="make" class="primary" hidden>Make the video</button>
-        <button id="makegif" hidden>Make a GIF</button>
-        <progress id="progress" max="1" value="0" hidden></progress>
-      </div>
 
       <div id="result" class="result" hidden>
         
