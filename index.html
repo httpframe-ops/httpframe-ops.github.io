@@ -10,9 +10,8 @@
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d0d10'/%3E%3Crect x='7' y='10' width='13' height='12' rx='2' fill='%23e8e2d4'/%3E%3Cpath d='M21 14l5-3v10l-5-3z' fill='%23e8e2d4'/%3E%3C/svg%3E"
     />
     
-  <link rel="preload" href="/projector.mesh.gz" as="fetch" crossorigin="anonymous" />
-  <script type="module" crossorigin src="/assets/index-CR6gmZxl.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BYH7PYIV.css">
+  <script type="module" crossorigin src="/assets/index-ByLUtZV8.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DXsO8oxy.css">
 </head>
   
   <body class="parked lit">
@@ -51,58 +50,7 @@
       </div>
 
       
-      <div class="projector">
-        
-        <div class="pj">
-          
-          <div class="pj-face pj-rear">
-            
-            <div class="pj-strip"><i class="pj-logo"></i><i class="pj-mark"></i></div>
-
-            <div class="pj-panel">
-              <span class="pj-dial pj-dial-a"></span>
-              <span class="pj-dial pj-dial-b"></span>
-              
-              <div class="pj-advance"><i></i><i></i></div>
-              
-              <span class="pj-selector"><i></i></span>
-              <span class="pj-slot"></span>
-            </div>
-
-            <div class="pj-vent"></div>
-            <span class="pj-lamp"></span>
-            <button id="pj-power" class="pj-power" type="button" tabindex="-1" aria-hidden="true">
-              <span class="pj-power-rocker"></span>
-            </button>
-          </div>
-
-          <div class="pj-face pj-top"><span class="pj-topvent"></span></div>
-          <div class="pj-face pj-left"></div>
-          <div class="pj-face pj-right"></div>
-          <div class="pj-face pj-fore"></div>
-
-          
-          <div class="pj-hood">
-            <i class="hd-top"></i>
-            <i class="hd-face"></i>
-            <span class="pj-knob pj-knob-a"></span>
-            <span class="pj-knob pj-knob-b"></span>
-          </div>
-
-          
-          <div class="pj-reels">
-            <span class="pj-arm pj-arm-a"></span>
-            <span class="pj-arm pj-arm-b"></span>
-            <span class="pj-reel pj-reel-a">
-              <i class="rl-back"></i><i class="rl-film"></i><i class="rl-front"></i><i class="rl-hub"></i>
-            </span>
-            <span class="pj-reel pj-reel-b">
-              <i class="rl-back"></i><i class="rl-film"></i><i class="rl-front"></i><i class="rl-hub"></i>
-            </span>
-          </div>
-          <div class="pj-barrel"></div>
-        </div>
-      </div>
+      <div class="projector"></div>
       </div>
 
       
@@ -116,6 +64,8 @@
     <div class="beam-layer" aria-hidden="true">
       
       <div class="beam-cone" aria-hidden="true"><i class="beam-tint"></i></div>
+      
+      <div class="beam-glow" aria-hidden="true"></div>
 
       
       <div class="beam-dust" aria-hidden="true">
@@ -128,10 +78,13 @@
     </div>
 
     
-    <h1>Still Standing</h1>
+    <div class="room room-over" aria-hidden="true">
+      <div class="camera"><div class="projector"></div></div>
+    </div>
 
     
-    <p class="credit">3D projector: Syzguru11 (CC BY)</p>
+    <h1>Still Standing</h1>
+
 
     
     <div id="powerlead" class="powerlead" aria-hidden="true"></div>
@@ -171,26 +124,29 @@
       </div>
     </div>
 
+    
+    <div class="room room-app">
+      <div class="camera">
     <main id="app">
       
       <div class="gallery">
         <figure class="sample">
-          <video src="/examples/q660.mp4" poster="/examples/q660.jpg" autoplay muted loop playsinline preload="auto"></video>
+          <video src="/examples/redhair.mp4" poster="/examples/redhair.jpg" autoplay muted loop playsinline preload="auto"></video>
         </figure>
         <figure class="sample">
-          <video src="/examples/q823.mp4" poster="/examples/q823.jpg" autoplay muted loop playsinline preload="auto"></video>
+          <video src="/examples/rock.mp4" poster="/examples/rock.jpg" autoplay muted loop playsinline preload="auto"></video>
         </figure>
         <figure class="sample">
-          <video src="/examples/p1015.mp4" poster="/examples/p1015.jpg" autoplay muted loop playsinline preload="auto"></video>
+          <video src="/examples/bike.mp4" poster="/examples/bike.jpg" autoplay muted loop playsinline preload="auto"></video>
         </figure>
         <figure class="sample">
-          <video src="/examples/q342.mp4" poster="/examples/q342.jpg" autoplay muted loop playsinline preload="auto"></video>
+          <video src="/examples/labrador.mp4" poster="/examples/labrador.jpg" autoplay muted loop playsinline preload="auto"></video>
         </figure>
         <figure class="sample wide-only">
-          <video src="/examples/q1059.mp4" poster="/examples/q1059.jpg" autoplay muted loop playsinline preload="auto"></video>
+          <video src="/examples/ridge.mp4" poster="/examples/ridge.jpg" autoplay muted loop playsinline preload="auto"></video>
         </figure>
         <figure class="sample wide-only">
-          <video src="/examples/p1036.mp4" poster="/examples/p1036.jpg" autoplay muted loop playsinline preload="auto"></video>
+          <video src="/examples/beard.mp4" poster="/examples/beard.jpg" autoplay muted loop playsinline preload="auto"></video>
         </figure>
       </div>
 
@@ -241,6 +197,8 @@
       <p id="error" class="error" role="status" hidden></p>
       <p id="diag" class="diag" hidden></p>
     </main>
+      </div>
+    </div>
     </div>
 
   </body>
